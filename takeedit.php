@@ -282,8 +282,11 @@ $description = htmlspecialchars_uni((string)$_POST["description"]);
 $updateset[] = "keywords = " . sqlesc($keywords);
 $updateset[] = "description = " . sqlesc($description);
 $updateset[] = "name = " . sqlesc($name);
+
 $updateset[] = "descr = " . sqlesc($descr);
 $updateset[] = "ori_descr = " . sqlesc($descr);
+sql_query('REPLACE INTO torrents_descr (tid, descr_hash, descr_parsed) VALUES ('.implode(', ', array_map('sqlesc', array($id, md5($descr), format_comment($descr)))).')') or sqlerr(__FILE__,__LINE__);
+
 $updateset[] = "category = " . (0 + $type);
 if (get_user_class() >= UC_ADMINISTRATOR) {
 	if ($_POST["banned"]) {
