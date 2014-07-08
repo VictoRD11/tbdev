@@ -10,7 +10,7 @@ function block_switch(id) {
     }
     var hb = $.cookie('hb');
     if (typeof hb == 'undefined') {
-        hb = []
+        hb = [];
         $.cookie('hb', serialize(hb));
     } else
         hb = unserialize(hb);
@@ -20,7 +20,7 @@ function block_switch(id) {
         hb.splice(id, 1);
     }
     if (typeof hb == 'boolean')
-        hb = []
+        hb = [];
     $.cookie('hb', serialize(hb));
     jQuery(document).ready(function () {
         jQuery('#sb' + id).slideToggle("medium");
